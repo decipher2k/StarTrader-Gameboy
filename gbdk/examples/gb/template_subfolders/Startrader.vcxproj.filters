@@ -15,60 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="obj\dungeon_map.asm">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="obj\dungeon_tiles.asm">
-      <Filter>Source Files</Filter>
-    </None>
     <None Include="obj\main.asm">
       <Filter>Source Files</Filter>
     </None>
-    <None Include="res\StarmapTiles.inc">
-      <Filter>Header Files</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="res\Charset.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="res\dungeon_map.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="res\dungeon_tiles.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="res\Starmap.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="res\StarmapTiles.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\starmap_main.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="res\Charset.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="res\dungeon_map.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="res\dungeon_tiles.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="res\Starmap.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="res\StarmapTiles.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\starmap_main.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

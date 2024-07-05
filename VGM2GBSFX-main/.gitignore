@@ -1,0 +1,8 @@
+.vscode
+unused
+/obj/*
+*.map
+*.sym
+*.ihx
+*.noi
+*.cdb

@@ -1,0 +1,304 @@
+ROM0 bank #0:
+	SECTION: $0000-$003f ($0040 bytes) ["restarts"]
+	SECTION: $0040-$0040 ($0001 byte) ["Vblank interrupt"]
+	EMPTY: $0041-$0047 ($0007 bytes)
+	SECTION: $0048-$004b ($0004 bytes) ["LCD controller status interrupt"]
+	EMPTY: $004c-$004f ($0004 bytes)
+	SECTION: $0050-$0053 ($0004 bytes) ["Timer overflow interrupt"]
+	EMPTY: $0054-$0057 ($0004 bytes)
+	SECTION: $0058-$0058 ($0001 byte) ["Serial transfer completion interrupt"]
+	EMPTY: $0059-$005f ($0007 bytes)
+	SECTION: $0060-$0060 ($0001 byte) ["P10-P13 signal low edge interrupt"]
+	EMPTY: $0061-$00ff ($009f bytes)
+	SECTION: $0100-$0145 ($0046 bytes) ["Header"]
+	EMPTY: $0146-$014f ($000a bytes)
+	SECTION: $0150-$01c8 ($0079 bytes) ["main"]
+	         $0153 = isr_wrapper
+	         $015f = _paint_tile
+	         $0164 = _init
+	         $01c4 = _halt
+	SECTION: $01c9-$0971 ($07a9 bytes) ["Sound Driver"]
+	         $01c9 = hUGE_init
+	         $01da = hUGE_init.copy_song_descriptor_loop
+	         $01f1 = load_patterns
+	         $020a = load_patterns.load_pattern
+	         $0218 = hUGE_mute_channel
+	         $021e = hUGE_mute_channel.enable_loop
+	         $0225 = hUGE_mute_channel.enable_cut
+	         $0232 = get_current_row
+	         $0235 = get_current_row.row_in_a
+	         $0241 = get_current_note
+	         $024e = get_note_period
+	         $025b = get_note_poly
+	         $0271 = ptr_to_channel_member
+	         $027d = update_channel_freq
+	         $027f = update_channel_freq.nonzero_highmask
+	         $028c = update_channel_freq.update_channel1
+	         $029d = update_channel_freq.update_channel2
+	         $02ae = update_channel_freq.update_channel3
+	         $02bf = update_channel_freq.update_channel4
+	         $02d1 = play_note_routines
+	         $02d9 = play_ch1_note
+	         $02ec = play_ch2_note
+	         $02ff = play_ch3_note
+	         $0322 = play_ch4_note
+	         $0333 = do_table
+	         $0347 = do_table.no_steal
+	         $034d = do_table.no_jump
+	         $036b = do_table.is_ch4
+	         $0372 = do_table.no_note
+	         $0373 = do_table.no_note2
+	         $0378 = do_effect
+	         $037a = do_effect.no_set_offset
+	         $0392 = do_effect.no_offset
+	         $0398 = do_effect.jump
+	         $03b8 = fx_set_master_volume
+	         $03bd = fx_call_routine
+	         $03d7 = fx_set_pan
+	         $03dc = fx_set_duty
+	         $03e9 = fx_set_duty.chan1
+	         $03f0 = fx_set_duty.chan2
+	         $03f7 = fx_set_duty.chan4
+	         $0402 = fx_set_duty.chan3
+	         $0411 = update_ch3_waveform
+	         $0460 = fx_set_speed
+	         $0466 = fx_pos_jump
+	         $0466 = hUGE_set_position
+	         $046f = fx_pos_jump.already_broken
+	         $0472 = fx_pattern_break
+	         $0478 = fx_note_cut
+	         $0489 = note_cut
+	         $049c = fx_set_volume
+	         $04ab = fx_set_volume.set_chn_1_vol
+	         $04b8 = fx_set_volume.set_chn_2_vol
+	         $04c5 = fx_set_volume.set_chn_3_vol
+	         $04d4 = fx_set_volume.three
+	         $04d8 = fx_set_volume.two
+	         $04dc = fx_set_volume.one
+	         $04de = fx_set_volume.done
+	         $04e1 = fx_set_volume.set_chn_4_vol
+	         $04ea = fx_vibrato
+	         $04fd = fx_vibrato.restore
+	         $0504 = fx_vibrato.go_up
+	         $050f = fx_vibrato.finish_vibrato
+	         $0512 = fx_arpeggio
+	         $051f = fx_arpeggio.greater_than_two
+	         $0521 = fx_arpeggio.test_greater_than_two
+	         $052e = fx_arpeggio.arp_options
+	         $0532 = fx_arpeggio.reset_arp
+	         $0535 = fx_arpeggio.set_arp2
+	         $0539 = fx_arpeggio.set_arp1
+	         $053a = fx_arpeggio.finish_arp
+	         $053d = fx_arpeggio.finish_skip_add
+	         $0545 = fx_porta_up
+	         $0554 = fx_porta_down
+	         $0563 = fx_toneporta
+	         $0578 = fx_toneporta.high_byte_same
+	         $057e = fx_toneporta.add
+	         $0590 = fx_toneporta.subtract
+	         $05a6 = fx_toneporta.set_exact
+	         $05a8 = fx_toneporta.done
+	         $05ba = fx_toneporta.setup
+	         $05ca = ret_dont_play_note
+	         $05cf = fx_vol_slide
+	         $05f9 = fx_vol_slide.cont1
+	         $0600 = fx_vol_slide.cont2
+	         $060b = fx_note_delay
+	         $060f = play_note
+	         $0619 = setup_instrument_pointer
+	         $0620 = setup_instrument_pointer.finish
+	         $062b = hUGE_dosound
+	         $062b = _hUGE_dosound
+	         $0655 = hUGE_dosound.toneporta
+	         $0682 = hUGE_dosound.write_mask1
+	         $0685 = hUGE_dosound.do_setvol1
+	         $069f = process_ch2
+	         $06ba = process_ch2.toneporta
+	         $06e5 = process_ch2.write_mask2
+	         $06e8 = process_ch2.do_setvol2
+	         $0702 = process_ch3
+	         $071e = process_ch3.toneporta
+	         $0746 = process_ch3.no_wave_copy
+	         $0754 = process_ch3.write_mask3
+	         $0757 = process_ch3.do_setvol3
+	         $0771 = process_ch4
+	         $07c8 = process_ch4.write_mask4
+	         $07cb = process_ch4.do_setvol4
+	         $07e8 = process_effects
+	         $0801 = process_effects.after_effect1
+	         $0812 = process_effects.process_ch2
+	         $082b = process_effects.after_effect2
+	         $083c = process_effects.process_ch3
+	         $0855 = process_effects.after_effect3
+	         $0866 = process_effects.process_ch4
+	         $087f = process_effects.after_effect4
+	         $0890 = tick_time
+	         $08ad = tick_time.no_break
+	         $08b7 = tick_time.neworder
+	         $08c0 = tick_time.no_loop_order
+	         $08cd = tick_time.update_current_order
+	         $08d5 = tick_time.noreset
+	         $08e2 = note_table
+	EMPTY: $0972-$3fff ($368e bytes)
+	TOTAL EMPTY: $374d bytes
+
+ROMX bank #1:
+	SECTION: $4000-$4311 ($0312 bytes) ["Song Data"]
+	         $4000 = song
+	         $4015 = order_cnt
+	         $4016 = order1
+	         $4018 = order2
+	         $401a = order3
+	         $401c = order4
+	         $401e = P0
+	         $40de = P1
+	         $419e = P14
+	         $425e = duty_instruments
+	         $425e = itSquareinst1
+	         $4264 = itSquareinst2
+	         $426a = itSquareinst3
+	         $4270 = itSquareinst4
+	         $4276 = itSquareinst5
+	         $427c = itSquareinst6
+	         $4282 = itSquareinst7
+	         $4288 = itSquareinst8
+	         $428e = itSquareinst9
+	         $4294 = itSquareinst10
+	         $429a = itSquareinst11
+	         $42a0 = wave_instruments
+	         $42a0 = noise_instruments
+	         $42a0 = itNoiseinst1
+	         $42a6 = itNoiseinst2
+	         $42ac = itNoiseinst3
+	         $42b2 = itNoiseinst4
+	         $42b8 = itNoiseinst5
+	         $42be = itNoiseinst6
+	         $42c4 = itNoiseinst7
+	         $42ca = itNoiseinst8
+	         $42d0 = itNoiseinst9
+	         $42d6 = itNoiseinst10
+	         $42dc = itNoiseinst11
+	         $42e2 = __hUGE_Routine_0
+	         $42e2 = __end_hUGE_Routine_0
+	         $42e3 = __hUGE_Routine_1
+	         $42e3 = __end_hUGE_Routine_1
+	         $42e4 = __hUGE_Routine_2
+	         $42e4 = __end_hUGE_Routine_2
+	         $42e5 = __hUGE_Routine_3
+	         $42e5 = __end_hUGE_Routine_3
+	         $42e6 = __hUGE_Routine_4
+	         $42e6 = __end_hUGE_Routine_4
+	         $42e7 = __hUGE_Routine_5
+	         $42e7 = __end_hUGE_Routine_5
+	         $42e8 = __hUGE_Routine_6
+	         $42e8 = __end_hUGE_Routine_6
+	         $42e9 = __hUGE_Routine_7
+	         $42e9 = __end_hUGE_Routine_7
+	         $42ea = __hUGE_Routine_8
+	         $42ea = __end_hUGE_Routine_8
+	         $42eb = __hUGE_Routine_9
+	         $42eb = __end_hUGE_Routine_9
+	         $42ec = __hUGE_Routine_10
+	         $42ec = __end_hUGE_Routine_10
+	         $42ed = __hUGE_Routine_11
+	         $42ed = __end_hUGE_Routine_11
+	         $42ee = __hUGE_Routine_12
+	         $42ee = __end_hUGE_Routine_12
+	         $42ef = __hUGE_Routine_13
+	         $42ef = __end_hUGE_Routine_13
+	         $42f0 = __hUGE_Routine_14
+	         $42f0 = __end_hUGE_Routine_14
+	         $42f1 = __hUGE_Routine_15
+	         $42f1 = __end_hUGE_Routine_15
+	         $42f2 = routines
+	         $4312 = waves
+	EMPTY: $4312-$7fff ($3cee bytes)
+	TOTAL EMPTY: $3cee bytes
+
+WRAM0 bank #0:
+	SECTION: $c000-$c066 ($0067 bytes) ["Playback variables"]
+	         $c000 = order_cnt
+	         $c001 = order1
+	         $c001 = _start_song_descriptor_pointers
+	         $c003 = order2
+	         $c005 = order3
+	         $c007 = order4
+	         $c009 = duty_instruments
+	         $c00b = wave_instruments
+	         $c00d = noise_instruments
+	         $c00f = routines
+	         $c011 = waves
+	         $c013 = pattern1
+	         $c013 = _end_song_descriptor_pointers
+	         $c015 = pattern2
+	         $c017 = pattern3
+	         $c019 = pattern4
+	         $c01b = ticks_per_row
+	         $c01c = current_wave
+	         $c01c = _hUGE_current_wave
+	         $c01c = hUGE_current_wave
+	         $c01d = mute_channels
+	         $c01d = start_zero
+	         $c01d = _hUGE_mute_mask
+	         $c01e = counter
+	         $c01f = tick
+	         $c020 = row_break
+	         $c021 = next_order
+	         $c022 = row
+	         $c023 = current_order
+	         $c024 = loop_order
+	         $c025 = single_stepping
+	         $c026 = single_step_stopped
+	         $c027 = channels
+	         $c027 = channel_period1
+	         $c027 = channel1
+	         $c029 = toneporta_target1
+	         $c02b = channel_note1
+	         $c02c = highmask1
+	         $c02d = vibrato_tremolo_phase1
+	         $c02e = envelope1
+	         $c02f = table1
+	         $c031 = table_row1
+	         $c037 = channel_period2
+	         $c037 = channel2
+	         $c039 = toneporta_target2
+	         $c03b = channel_note2
+	         $c03c = highmask2
+	         $c03d = vibrato_tremolo_phase2
+	         $c03e = envelope2
+	         $c03f = table2
+	         $c041 = table_row2
+	         $c047 = channel_period3
+	         $c047 = channel3
+	         $c049 = toneporta_target3
+	         $c04b = channel_note3
+	         $c04c = highmask3
+	         $c04d = vibrato_tremolo_phase3
+	         $c04e = envelope3
+	         $c04f = table3
+	         $c051 = table_row3
+	         $c057 = channel_period4
+	         $c057 = channel4
+	         $c059 = toneporta_target4
+	         $c05b = channel_note4
+	         $c05c = highmask4
+	         $c05d = step_width4
+	         $c05e = vibrato_tremolo_phase4
+	         $c05f = envelope4
+	         $c060 = table4
+	         $c062 = table_row4
+	         $c067 = end_zero
+	EMPTY: $c067-$cfff ($0f99 bytes)
+	TOTAL EMPTY: $0f99 bytes
+
+HRAM bank #0:
+	EMPTY: $ff80-$ff83 ($0004 bytes)
+	SECTION: $ff84-$fffd ($007a bytes) ["Stack"]
+	EMPTY: $fffe-$fffe ($0001 byte)
+	TOTAL EMPTY: $0005 bytes
+
+SUMMARY:
+	ROM0: 2227 bytes used / 14157 free
+	ROMX: 786 bytes used / 15598 free in 1 bank
+	WRAM0: 103 bytes used / 3993 free
+	HRAM: 122 bytes used / 5 free

@@ -14,6 +14,7 @@ enum ESCENES {
 
 //typedef enum SCENES SCENES;
 
+
 void main(void)
 {
     volatile int currentScene = SCENE_STARMAP;
