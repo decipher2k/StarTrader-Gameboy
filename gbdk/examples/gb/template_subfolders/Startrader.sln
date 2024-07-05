@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Startrader", "Startrader.vcxproj", "{F6FDF612-8799-40B0-B03D-6378EAE789EB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6FDF612-8799-40B0-B03D-6378EAE789EB}.Debug|x64.ActiveCfg = Debug|x64
+		{F6FDF612-8799-40B0-B03D-6378EAE789EB}.Debug|x64.Build.0 = Debug|x64
+		{F6FDF612-8799-40B0-B03D-6378EAE789EB}.Debug|x86.ActiveCfg = Debug|Win32
+		{F6FDF612-8799-40B0-B03D-6378EAE789EB}.Debug|x86.Build.0 = Debug|Win32
+		{F6FDF612-8799-40B0-B03D-6378EAE789EB}.Release|x64.ActiveCfg = Release|x64
+		{F6FDF612-8799-40B0-B03D-6378EAE789EB}.Release|x64.Build.0 = Release|x64
+		{F6FDF612-8799-40B0-B03D-6378EAE789EB}.Release|x86.ActiveCfg = Release|Win32
+		{F6FDF612-8799-40B0-B03D-6378EAE789EB}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {33B81485-A71E-4D2C-9D88-6510CF98713B}
+	EndGlobalSection
+EndGlobal
