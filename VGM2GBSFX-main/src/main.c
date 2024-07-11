@@ -3,8 +3,7 @@
 #include <stdio.h>
 
 #include "musicmanager.h"
-
-#include "wave_asobitech.h"         // generated from WAV
+        // generated from WAV
 
 
 

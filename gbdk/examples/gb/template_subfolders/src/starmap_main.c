@@ -1,17 +1,22 @@
 #include "starmap_main.h"
-#include "../res/starmap_background.h"
+//#include "../res/starmap_background.h"
 
 #include <gbdk/platform.h>
 #include <stdint.h>
 #include <stdio.h>
-
+/*
 #include "musicmanager.h"
+*/
 #include "hUGEDriver.h"
+
+
+extern const hUGESong_t StarfieldMusic;
 Star* Stars[15];
 Star* currStar;
-    
+   
 void starmap_init_gfx(void)
 {
+    SPRITES_8x8;
     // Load Background tiles and then map
     set_bkg_data(0, 592u, StarmapTiles);
     set_bkg_tiles(0, 0, 20u, 18u, Starmap);
@@ -28,10 +33,19 @@ void starmap_init(void)
     set_sprite_data(0, 584, StarmapTiles);
     set_sprite_tile(0, 0);
 
-    NR52_REG = 0x80; // is 1000 0000 in binary and turns on sound
-    NR50_REG = 0x77; // sets the volume for both left and right channel just set to max 0x77
-    NR51_REG = 0xFF; // is 1111 1111 in binary, select which chanels we want to use in this case all of them. One bit for the L one bit for the R of all four channels
+    LCDC_REG = 0xD1;
+    BGP_REG = 0b11100100;
+    NR52_REG = 0x80;
+    NR51_REG = 0xFF;
+    NR50_REG = 0x77;
 
+    NR32_REG = 0b00100000;
+ 
+
+    hUGE_init(&StarfieldMusic);
+    add_VBL(hUGE_dosound);
+
+    /*
     static uint8_t music_paused = FALSE;
 
     // initialize the music and SFX driver
@@ -46,11 +60,12 @@ void starmap_init(void)
         // enable the timer interrupt
     set_interrupts(IE_REG | TIM_IFLAG);
     music_load(BANK(StarSelect), (const struct hUGESong_t * )&StarSelect), music_pause(music_paused = FALSE);
-
+    */
 }
 
 int starmap_loop(void)
 {    
+    wait_vbl_done();
     Star* oldStar = currStar;
     switch (joypad()) {
     case J_A:
@@ -60,43 +75,68 @@ int starmap_loop(void)
         NR13_REG = 0X73;
         NR14_REG = 0X86;
         delay(500);
-     //   return currStar->id;
+        return currStar->id;
         break;
     case J_RIGHT: // If joypad() is equal to RIGHT
         if (currStar->right != NULL)
-            currStar = currStar->right;        
-        NR10_REG = 0X120;
-        NR11_REG = 0X81;
-        NR12_REG = 0X43;
-        NR13_REG = 0X73;
-        NR14_REG = 0X86;
+        {
+            currStar = currStar->right;
+            NR10_REG = 0X0;
+            NR11_REG = 0X81;
+            NR12_REG = 0X43;
+            NR13_REG = 0X73;
+            NR14_REG = 0X86;
+        }
+        else
+        {
+            delay(500);
+        }
+
         break;
     case J_LEFT: // If joypad() is equal to LEFT
         if (currStar->left != NULL)
+        {
             currStar = currStar->left;
-        NR10_REG = 0X120;
-        NR11_REG = 0X81;
-        NR12_REG = 0X43;
-        NR13_REG = 0X73;
-        NR14_REG = 0X86;
+            NR10_REG = 0X0;
+            NR11_REG = 0X81;
+            NR12_REG = 0X43;
+            NR13_REG = 0X73;
+            NR14_REG = 0X86;
+        }
+        else
+        {
+            delay(500);
+        }
         break;
     case J_UP: // If joypad() is equal to UP
         if (currStar->top != NULL)
+        {
             currStar = currStar->top;
-        NR10_REG = 0X120;
-        NR11_REG = 0X81;
-        NR12_REG = 0X43;
-        NR13_REG = 0X73;
-        NR14_REG = 0X86;
+            NR10_REG = 0X0;
+            NR11_REG = 0X81;
+            NR12_REG = 0X43;
+            NR13_REG = 0X73;
+            NR14_REG = 0X86;
+        }
+        else
+        {
+            delay(500);
+        }
         break;
     case J_DOWN: // If joypad() is equal to DOWN
         if (currStar->down != NULL)
+        {
             currStar = currStar->down;
-        NR10_REG = 0X120;
-        NR11_REG = 0X81;
-        NR12_REG = 0X43;
-        NR13_REG = 0X73;
-        NR14_REG = 0X86;
+            NR10_REG = 0X0;
+            NR11_REG = 0X81;
+            NR12_REG = 0X43;
+            NR13_REG = 0X73;
+            NR14_REG = 0X86;
+        }
+        else
+        {
+            delay(500);
+        }
         break;
     }
     move_sprite(0, 8 + (currStar->x * 8), 16 + (currStar->y * 8));

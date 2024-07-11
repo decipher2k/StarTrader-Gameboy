@@ -5,6 +5,7 @@
 #include <stdio.h>
 
 #include "starmap_main.h"
+#include "../../Planetsystem/starsystem_main.h"
 
 
 enum ESCENES {
@@ -34,7 +35,13 @@ void main(void)
         }
         else if (currentScene == SCENE_PLANETSYSTEM)
         {
-
+            volatile int starsystemRet = -1;
+            starsystem_init();
+            while (starsystemRet == -1) {
+                starsystemRet = starsystem_loop();
+            }
+            if (starsystemRet == 1)
+                currentScene = SCENE_STARMAP;
         }
     }
 }

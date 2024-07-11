@@ -1,6 +1,6 @@
 /*
 
- STARMAPTILES.H
+ STARSYSTEMTILES.H
 
  Include File.
 
@@ -10,7 +10,7 @@
   Compression          : None.
   Counter              : None.
   Tile size            : 8 x 8
-  Tiles                : 0 to 73
+  Tiles                : 0 to 32
 
   Palette colors       : None.
   SGB Palette          : None.
@@ -22,14 +22,14 @@
 
 */
 
-#ifndef __StarmapTiles_h_INCLUDE
-#define __StarmapTiles_h_INCLUDE
+#ifndef __StarsystemTiles_h_INCLUDE
+#define __StarsystemTiles_h_INCLUDE
 
 /* Bank of tiles. */
-#define StarmapTilesBank 0
+#define StarsystemTilesBank 0
 /* Start of tile array. */
-extern const unsigned char StarmapTiles[];
+extern const unsigned char StarsystemTiles[];
 
 #endif
 
-/* End of STARMAPTILES.H */
+/* End of STARSYSTEMTILES.H */
